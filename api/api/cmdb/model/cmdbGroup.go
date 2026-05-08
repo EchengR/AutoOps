@@ -7,7 +7,7 @@ import "dodevops-api/common/util"
 type CmdbGroup struct {
 	ID         uint        `gorm:"column:id;comment:'主键';primaryKey;NOT NULL" json:"id"`                 // 主键ID
 	ParentID   uint        `gorm:"column:parent_id;default:0;comment:'父级分组ID';NOT NULL" json:"parentId"` // 父级分组ID（0 表示根分组）
-	Name       string      `gorm:"column:name;varchar(50);comment:'分组名称';NOT NULL" json:"name"`          // 分组名称
+	Name       string      `gorm:"column:name;type:varchar(50);comment:'分组名称';NOT NULL" json:"name"`     // 分组名称
 	CreateTime util.HTime  `gorm:"column:create_time;comment:'创建时间';NOT NULL" json:"createTime"`         // 创建时间
 	Children   []CmdbGroup `json:"children" gorm:"-"`                                                    // 子分组（虚拟字段，用于树形展示）
 	Hosts      []CmdbHost  `gorm:"foreignKey:GroupID" json:"hosts"`                                      // 关联的主机列表

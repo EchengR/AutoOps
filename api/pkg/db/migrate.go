@@ -2,13 +2,13 @@
 package db
 
 import (
+	appmodel "dodevops-api/api/app/model"
 	cmdbmodel "dodevops-api/api/cmdb/model"
 	ccmodel "dodevops-api/api/configcenter/model"
-	monitormodel "dodevops-api/api/monitor/model"
-	taskmodel "dodevops-api/api/task/model"
 	k8smodel "dodevops-api/api/k8s/model"
-	appmodel "dodevops-api/api/app/model"
+	monitormodel "dodevops-api/api/monitor/model"
 	systemmodel "dodevops-api/api/system/model"
+	taskmodel "dodevops-api/api/task/model"
 	toolmodel "dodevops-api/api/tool/model"
 
 	"gorm.io/gorm"
@@ -39,6 +39,12 @@ var models = []interface{}{
 	&toolmodel.Tool{},
 	&toolmodel.ServiceDeploy{},
 	// 可以继续添加其他模型...
+	&systemmodel.SysAdmin{},
+	&systemmodel.SysRole{},
+	&systemmodel.SysDept{},
+	&systemmodel.SysLoginInfo{},
+	&systemmodel.SysMenu{},
+	&systemmodel.SysPost{},
 }
 
 // 自动迁移所有模型

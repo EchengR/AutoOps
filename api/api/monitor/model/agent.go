@@ -8,10 +8,10 @@ import (
 type Agent struct {
 	ID              uint       `gorm:"column:id;comment:'主键';primaryKey;NOT NULL" json:"id"`
 	HostID          uint       `gorm:"column:host_id;comment:'主机ID';NOT NULL;index" json:"hostId"`
-	HostName        string     `gorm:"column:host_name;varchar(128);comment:'主机名称'" json:"hostName"`
-	Version         string     `gorm:"column:version;varchar(32);comment:'Agent版本';default:'1.0.0'" json:"version"`
+	HostName        string     `gorm:"column:host_name;type:varchar(128);comment:'主机名称'" json:"hostName"`
+	Version         string     `gorm:"column:version;type:varchar(32);comment:'Agent版本';default:'1.0.0'" json:"version"`
 	Status          int        `gorm:"column:status;comment:'状态:1->部署中,2->部署失败,3->运行中,4->已停止'" json:"status"`
-	InstallPath     string     `gorm:"column:install_path;varchar(256);comment:'安装路径'" json:"installPath"`
+	InstallPath     string     `gorm:"column:install_path;type:varchar(256);comment:'安装路径'" json:"installPath"`
 	Port            int        `gorm:"column:port;comment:'监听端口';default:9100" json:"port"`
 	PID             int        `gorm:"column:pid;comment:'进程ID'" json:"pid"`
 	LastHeartbeat   util.HTime `gorm:"column:last_heartbeat;comment:'最后心跳时间'" json:"lastHeartbeat"`
@@ -112,7 +112,7 @@ type AgentVO struct {
 	ID                  uint       `json:"id"`
 	HostID              uint       `json:"hostId"`
 	HostName            string     `json:"hostName"`
-	SSHIP               string     `json:"sshIp"`               // SSH连接IP
+	SSHIP               string     `json:"sshIp"` // SSH连接IP
 	Version             string     `json:"version"`
 	Status              int        `json:"status"`
 	StatusText          string     `json:"statusText"`

@@ -8,12 +8,12 @@ import (
 // Knowledge 运维知识库模型
 type Knowledge struct {
 	ID         uint      `gorm:"column:id;comment:'主键';primaryKey;autoIncrement;NOT NULL" json:"id"`
-	Title      string    `gorm:"column:title;varchar(200);comment:'标题';NOT NULL" json:"title"`
-	Category   string    `gorm:"column:category;varchar(50);default:'其他';comment:'分类'" json:"category"`
+	Title      string    `gorm:"column:title;type:varchar(200);comment:'标题';NOT NULL" json:"title"`
+	Category   string    `gorm:"column:category;type:varchar(50);default:'其他';comment:'分类'" json:"category"`
 	Content    string    `gorm:"column:content;type:longtext;comment:'Markdown内容'" json:"content"`
-	Tags       string    `gorm:"column:tags;varchar(500);default:'';comment:'标签(JSON数组)'" json:"tags"`
+	Tags       string    `gorm:"column:tags;type:varchar(500);default:'';comment:'标签(JSON数组)'" json:"tags"`
 	Status     int       `gorm:"column:status;default:1;comment:'状态:1->已发布,2->草稿'" json:"status"`
-	Author     string    `gorm:"column:author;varchar(50);default:'';comment:'作者'" json:"author"`
+	Author     string    `gorm:"column:author;type:varchar(50);default:'';comment:'作者'" json:"author"`
 	CreateTime time.Time `gorm:"column:create_time;comment:'创建时间';NOT NULL" json:"createTime"`
 	UpdateTime time.Time `gorm:"column:update_time;comment:'更新时间'" json:"updateTime"`
 }
@@ -67,10 +67,10 @@ type KnowledgeVo struct {
 // KnowledgeCategory 知识分类
 type KnowledgeCategory struct {
 	ID          uint      `gorm:"column:id;comment:'主键';primaryKey;autoIncrement;NOT NULL" json:"id"`
-	Name        string    `gorm:"column:name;varchar(50);comment:'分类名称';NOT NULL;unique" json:"name"`
+	Name        string    `gorm:"column:name;type:varchar(50);comment:'分类名称';NOT NULL;unique" json:"name"`
 	Sort        int       `gorm:"column:sort;default:0;comment:'排序'" json:"sort"`
 	CreateTime  time.Time `gorm:"column:create_time;comment:'创建时间';NOT NULL" json:"createTime"`
-	Description string    `gorm:"column:description;varchar(200);comment:'分类描述'" json:"description"`
+	Description string    `gorm:"column:description;type:varchar(200);comment:'分类描述'" json:"description"`
 }
 
 func (KnowledgeCategory) TableName() string {
